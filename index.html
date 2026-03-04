@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student App</title>
+    <style>
+
+        
+        .dark-mode {
+    background-color: #1a202c;
+    color: #e2e8f0;
+}
+
+.dark-mode table {
+    border-color: #718096;
+}
+
+.dark-mode th, .dark-mode td {
+    border-color: #718096;
+}
+
+.dark-mode #statsBox {
+    background-color: #2d3748;
+    border-color: #718096;
+}
+
+.dark-mode input, .dark-mode button {
+    background-color: #2d3748;
+    color: #e2e8f0;
+    border: 1px solid #718096;
+}
+
+.dark-mode span {
+    color: white; /* badges will stay visible */
+}
+        body{font-family: Arial; padding:20px;}
+        input, button{padding:6px; margin:3px;}
+        table{border-collapse: collapse; margin-top:20px; width:100%;}
+        th, td{border:1px solid #000; padding:8px;}
+        .pass{background-color:#c6f6d5;}
+        .fail{background-color:#fed7d7;}
+        #statsBox{margin-top:20px; padding:15px; border:1px solid #ccc; border-radius:10px; background:#f7fafc;}
+    </style>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Student Dashboard</h1>
+
+    <!-- Controls -->
+    <div style="margin-bottom:20px;">
+        <form id="myForm" style="display:inline-block;">
+            <input type="text" id="name" placeholder="Name">
+            <input type="text" id="email" placeholder="Email">
+            <input type="number" id="score" placeholder="Score">
+            <button type="submit">Add</button>
+        </form>
+        <input type="text" id="searchInput" placeholder="Search..." style="margin-left:20px; padding:6px;">
+        <button onclick="exportCSV()">Export CSV</button>
+        <button onclick="backupData()">Backup</button>
+        <button onclick="restoreData()">Restore</button>
+        <button id="darkModeBtn">Toggle Dark Mode 🌙</button>
+    </div>
+
+    <!-- Dashboard Panels -->
+    <div style="display:flex; flex-wrap:wrap; gap:20px;">
+
+        <!-- Statistics -->
+        <div id="statsBox" style="flex:1 1 250px; padding:15px; border:1px solid #ccc; border-radius:10px; background:#f7fafc;">
+            <h3>Statistics</h3>
+            <p>Total Students: <span id="totalStudents">0</span></p>
+            <p>Average Score: <span id="avgScore">0</span></p>
+            <p>Highest Score: <span id="highestScore">0</span></p>
+            <p>Lowest Score: <span id="lowestScore">0</span></p>
+        </div>
+
+        <!-- Charts -->
+        <div style="flex:2 1 500px;">
+            <h3>Scores Chart</h3>
+            <canvas id="scoreChart" width="400" height="200"></canvas>
+            <h3>Pass/Fail Ratio</h3>
+            <canvas id="passFailChart" width="400" height="200"></canvas>
+        </div>
+
+    </div>
+
+    <!-- Student Table -->
+    <h3>Student Records</h3>
+    <table id="studentTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Score</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+<!-- Chart -->
+<h3>Score Chart</h3>
+<h3>Pass/Fail Ratio</h3>
+<canvas id="passFailChart" width="400" height="200"></canvas>
+<canvas id="scoreChart" width="400" height="200"></canvas>
+<canvas id="myChart"></canvas>
+<script src="script.js"></script>
+<link rel="stylesheet" href="style.css">
+</body>
+</html>
