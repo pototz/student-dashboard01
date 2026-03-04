@@ -1,53 +1,55 @@
-
-
-/* Dashboard Flex */
-body{font-family: Arial; padding:20px;}
-input, button{padding:6px; margin:3px;}
-table{border-collapse: collapse; margin-top:20px; width:100%;}
-th, td{border:1px solid #000; padding:8px;}
-.pass{background-color:#c6f6d5;}
-.fail{background-color:#fed7d7;}
-
-/* Dark mode */
-.dark-mode{
-    background-color:#1a202c; color:#e2e8f0;
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    color: #000;
+    padding: 20px;
 }
-.dark-mode table, .dark-mode th, .dark-mode td{border-color:#718096;}
-.dark-mode input, .dark-mode button{background-color:#2d3748; color:#e2e8f0; border:1px solid #718096;}
-.dark-mode #statsBox{background-color:#2d3748; border-color:#718096;}
 
-/* Flex layout */
-#statsBox, #scoreChart, #passFailChart{margin-bottom:20px;}
+input, button {
+    padding: 6px 10px;
+    margin: 4px;
+}
 
-
-#studentTable tbody tr:hover {
-    background-color: #bee3f8; /* light blue highlight */
-    transition: background-color 0.3s ease; /* smooth transition */
+button {
     cursor: pointer;
 }
 
-
-button {
-    transition: all 0.3s ease;
+table {
+    margin-top: 20px;
+    width: 100%;
+    border-collapse: collapse;
 }
 
-button:hover {
-    transform: scale(1.05); /* slight zoom */
-    background-color: #3182ce;
-    color: white;
+th, td {
+    padding: 8px;
+    border: 1px solid #ccc;
 }
 
-
-#studentTable tbody span {
-    transition: all 0.3s ease;
+.error {
+    color: red;
+    font-size: 0.85em;
 }
 
-#studentTable tbody span:hover {
-    transform: scale(1.1);
-    opacity: 0.85;
+.success {
+    color: green;
+    font-weight: bold;
+    margin-left: 10px;
 }
 
+/* Dark Mode */
+body.dark-mode {
+    background: #1e1e1e;
+    color: #f1f1f1;
+}
 
-canvas {
-    transition: all 0.5s ease;
+body.dark-mode table {
+    background: #2e2e2e;
+    color: #f1f1f1;
+}
+
+body.dark-mode input,
+body.dark-mode button {
+    background: #3e3e3e;
+    color: #fff;
+    border: 1px solid #555;
 }
