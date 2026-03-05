@@ -2,45 +2,91 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Student Dashboard</title>
-<link rel="stylesheet" href="style.css">
+<style>
+body { font-family: Arial; margin: 20px; }
+.dark-mode { background: #333; color: #fff; }
+table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
+button { margin: 2px; }
+</style>
 </head>
 <body>
 
 <h1>Student Dashboard</h1>
-<button id="darkModeBtn">Toggle Dark Mode</button>
 
 <form id="myForm">
-    <input type="text" id="name" placeholder="Name">
-    <span id="nameError" class="error"></span>
-
-    <input type="text" id="email" placeholder="Email">
-    <span id="emailError" class="error"></span>
-
-    <input type="number" id="score" placeholder="Score">
-    <span id="scoreError" class="error"></span>
-
-    <button type="submit">Add / Update</button>
-    <span id="successMsg" class="success"></span>
+  Name: <input type="text" id="name" required>
+  Email: <input type="email" id="email" required>
+  Score: <input type="number" id="score" min="0" max="100" required>
+  <button type="submit">Add / Update</button>
 </form>
 
+<br>
+<input type="text" id="searchInput" placeholder="Search Name or Email">
+<br><br>
+
+<label for="themeSelect">Theme:</label>
+<select id="themeSelect">
+    <option value="light">Light</option>
+    <option value="dark">Dark</option>
+    <option value="fun">Fun</option>
+</select>
+
+<body class="light-theme"> <!-- default -->
+    ...
+</body>
+
+
+<button id="filterAll">Reset View</button>
+<button id="sortHigh">Sort High → Low</button>
+<button id="sortLow">Sort Low → High</button>
+<button id="exportCsv">Export CSV</button>
+<button id="darkModeBtn">Dark Mode</button>
+
 <table id="studentTable">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Score</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody></tbody>
+<thead>
+<tr><th>Name</th><th>Email</th><th>Score</th><th>Actions</th></tr>
+</thead>
+<tbody></tbody>
 </table>
 
-<h2>Score Chart</h2>
-<canvas id="scoreChart"></canvas>
+<canvas id="scoreChart" width="400" height="200"></canvas>
+
+<div>
+<p>Total Students: <span id="totalStudents">0</span></p>
+<p>Average Score: <span id="avgScore">0</span></p>
+<p>Highest Score: <span id="highestScore">0</span></p>
+<p>Lowest Score: <span id="lowestScore">0</span></p>
+<p>Pass Rate: <span id="passRate">0%</span></p>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="script.js"></script>
+
+<div id="top1Notification" style="
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #00aaff;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    display: none;
+    font-weight: bold;
+    z-index: 1000;
+">New Top 1 Student!</div>
+
+<canvas id="confettiCanvas" style="
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+"></canvas>
+
 </body>
 </html>
